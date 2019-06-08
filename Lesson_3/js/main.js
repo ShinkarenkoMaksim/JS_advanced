@@ -123,6 +123,7 @@ class Cart{
     }
 
     _addItem(item){
+        this.cartProducts = [];
         let key = true;
         for (let product of this.data) {
             if (product.id_product == item.id_product) {
@@ -133,22 +134,25 @@ class Cart{
         }
         if (key) {
             item.quantity = 1;
-            this.data = [...item];
+            this.data.push(item);
             this._render();
         }
     }
 
     _deleteItem(id) {
+        this.cartProducts = [];
+        let i = 0;
         for(let item of this.data) {
             if (id == item.id_product) {
                 if (item.quantity > 1) {
                     item.quantity -= 1;
                     this._render();
                 } else {
-                    item = '';
+                    this.data.splice(i, 1);
                     this._render();
                 }
             }
+            i++;
         }
     }
 
@@ -186,8 +190,14 @@ class Cart{
     }
     _totalCost() {
         const block = document.querySelector(this.container);
-        if (this.amount) {
-            block.insertAdjacentHTML('beforeend', `<p class="cart-total">Итого в корзине ${this.countGoods} товаров $${this.amount}</p>`);
+        let price = 0;
+        let quantity = 0;
+        for (let item of this.data) {
+            quantity += item.quantity;
+            price += item.price*item.quantity;
+        }
+        if (price) {
+            block.insertAdjacentHTML('beforeend', `<p class="cart-total">Итого в корзине ${quantity} товаров $${price}</p>`);
         }
     }
 
