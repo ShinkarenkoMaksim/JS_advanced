@@ -1,0 +1,50 @@
+.flex {
+
+}
+
+.form {
+    border: 1px solid #000;
+    min-height: 500px;
+    position: fixed;
+    top: 50px;
+    right: 100px;
+    z-index: 1;
+}
+
+.form label {
+    padding: 20px;
+    position: relative;
+}
+
+.form input,
+.form textarea {
+    margin: 20px;
+}
+
+.alert {
+    border: 1px solid red;
+    background-color: palegoldenrod;
+}
+
+.after {
+    color: red;
+}
+
+.asteriks {
+    color: red;
+    display: block;
+    position: absolute;
+    top: 45px;
+    left: 7px;
+    z-index: 100;
+}
+
+.alert-item {
+    display: block;
+    border: 1px solid red;
+    background-color: yellow;
+    color: brown;
+    position: absolute;
+    top: 23px;
+    left: 50px;
+}
