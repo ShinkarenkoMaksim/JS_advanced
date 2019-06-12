@@ -10,7 +10,7 @@ class InputForm {
             for (let item of elements) {
                 if (item.name === 'name') {
                     this._removeWarning(item);
-                    if (!/[a-zа-я]/ig.test(item.value)) {
+                    if (/([^a-zа-я]+)/ig.test(item.value)||item.value === '') {
                         event.preventDefault();
                         this._addWarning(item, `Только буквы`);
                     }
