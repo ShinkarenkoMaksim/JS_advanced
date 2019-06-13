@@ -17,7 +17,7 @@ class InputForm {
                 }
                 if (item.name === 'tel') {
                     this._removeWarning(item);
-                    if (!/\+\(\d{3}\)\d{3}-\d{4}/.test(item.value)) {
+                    if (!/\+\d{1}\(\d{3}\)\d{3}-\d{4}/.test(item.value)) {
                         event.preventDefault();
                         this._addWarning(item, `+7(000)000-0000`);
                     }
