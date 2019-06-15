@@ -7,13 +7,27 @@ const app = new Vue({
         basketUrl: `/getBasket.json`,
         products: [],
         cartProducts: [],
-        cartCountGoods: 0,
-        cartAmount: 0,
         imgCatalog: `https://placehold.it/200x150`,
         imgCartCatalog: `https://placehold.it/100x75`,
         search: '',
         searchInput: '',
         isVisibleCart: false,
+    },
+    computed: {
+        cartAmount: function() {
+            let cartSum = 0;
+            this.cartProducts.forEach(item => {
+                cartSum += item.quantity * item.price;
+            });
+            return cartSum;
+        },
+        cartCountGoods: function () {
+            let cartCountGoods = 0;
+            this.cartProducts.forEach(item => {
+                cartCountGoods += item.quantity;
+            });
+            return cartCountGoods;
+        }
     },
     methods: {
         getJson(url){
@@ -32,8 +46,6 @@ const app = new Vue({
                             let item = Object.assign({}, product, {quantity: 1});
                             this.cartProducts.push(item);
                         }
-                        this.cartAmount += product.price;
-                        this.cartCountGoods++;
                     } else {
                         console.log('Error');
                     }
@@ -49,14 +61,12 @@ const app = new Vue({
                         } else {
                             find.quantity--;
                         }
-                        this.cartAmount -= product.price;
-                        this.cartCountGoods--;
                     } else {
                         console.log('Error');
                     }
                 })
         },
-        filterGoods(searchInput, event){ //Не уверен в оптимальности данного кода))
+        filterGoods(searchInput, event){
             if (event) {
                 event.preventDefault();
                 this.search = searchInput;
