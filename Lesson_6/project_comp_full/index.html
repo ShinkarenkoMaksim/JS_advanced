@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+    <error v-if="error" :error="error"></error>
+    <header>
+        <div class="logo">E-shop</div>
+        <div class="cart">
+            <search ref="search" @filter="$refs.products.filter($event)"></search>
+            <cart ref="cart"></cart>
+        </div>
+    </header>
+    <main>
+        <products ref="products"></products>
+    </main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+<script src="js/ProductsComponent.js"></script>
+<script src="js/CartComponent.js"></script>
+<script src="js/SearchComponent.js"></script>
+<script src="js/ErrorComponent.js"></script>
+<script defer src="js/main.js"></script>
+</body>
+</html>
