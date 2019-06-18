@@ -1,5 +1,8 @@
 let ProdItemComp = {
-    props: ['product', 'img'],
+    props: {
+        product: Object,
+        img: String,
+    },
     template: `<div class="product-item" >
             <img :src="img" :alt="product.product_name">
             <div class="desc">
