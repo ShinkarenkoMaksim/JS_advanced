@@ -1,8 +1,5 @@
 let CartItemComp = {
-    props: {
-        cartItem: Object,
-        img: String,
-    },
+    props: ['cartItem', 'img'],
     template: `<div class="cart-item" >
                 <div class="product-bio">
                     <img :src="img" alt="Some image">
